@@ -1,35 +1,20 @@
-﻿// Написать программу, которая из имеющегося массива строк формирует массив из строк, длина которых меньше либо равна 3 символам. 
-// Первоначальный массив можно ввести с клавиатуры, либо задать на старте выполнения алгоритма. 
-// При решении не рекомендуется пользоваться коллекциями, лучше обойтись исключительно массивами.
-
-Console.Clear();
-
-string[] array = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
+﻿Console.Clear();
+string[] array = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten" };
 
 string[] SelectArray(string[] array)
 {
-    int count = 0;
-    
+    string temp = "";
+
     for (int i = 0; i < array.Length; i++)
     {
         if (array[i].Length <= 3)
         {
-            count += 1;
+            temp += array[i];
+            if (i < array.Length - 1) temp += "#"; // # - это разделитель. Доп. условие нужно, чтобы не добавлять крайний разделитель.
         }
     }
-    
-    string[] selectedArray = new string[count];
-    {
-        int j = 0;
-        for (int i = 0; i < array.Length; i++)
-        {
-            if (array[i].Length <= 3) 
-            {
-                selectedArray[j] = array[i];
-                j += 1;
-            }
-        }
-    }
+    string[] selectedArray = temp.Split('#'); // разбиваем строку обратно в массив 
+
     return selectedArray;
 }
 
