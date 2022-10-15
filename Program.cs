@@ -3,18 +3,16 @@ string[] array = { "one", "two", "three", "four", "five", "six", "seven", "eight
 
 string[] SelectArray(string[] array)
 {
-    string temp = "";
+    var myList = array.ToList(); // Создаём коллекцию из массива.
 
     for (int i = 0; i < array.Length; i++)
     {
-        if (array[i].Length <= 3)
+        if (array[i].Length > 3)
         {
-            temp += array[i];
-            if (i < array.Length - 1) temp += "#"; // # - это разделитель. Доп. условие нужно, чтобы не добавлять крайний разделитель.
+            myList.Remove(array[i]); // Удаляем ненужные элементы из коллекции.
         }
     }
-    string[] selectedArray = temp.Split('#'); // разбиваем строку обратно в массив 
-
+    string[] selectedArray = myList.ToArray(); // Преобразуем коллекцию обратно в массив.
     return selectedArray;
 }
 
